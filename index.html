@@ -1,0 +1,672 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        :root {
+            --back-color: rgb(255, 255, 255);
+            --accent-color: rgb(121, 23, 23);
+            --light-text: rgb(150, 150, 150);
+            --line-width: 10px;
+            --line-width-thin: 2px;
+        }
+
+        body {
+            background-color: var(--back-color);
+            font-family: "Lato", sans-serif;
+        }
+
+        .contents {
+            max-width: 700px;
+            min-width: 400px;
+            margin: auto;
+            margin-top: 50px;
+        }
+
+        .name {
+
+            font-size: 50px;
+            border-left: var(--line-width) solid var(--accent-color);
+            border-top: var(--line-width) solid var(--accent-color);
+            padding: 1rem;
+        }
+
+        .header-details
+        {
+            margin-top: 3rem;
+            padding: 1rem;
+            width: 70%;
+            transform: translate(15%);
+
+            align-self: center;
+            display:flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .header-detail
+        {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .header-detail > div:nth-child(1)
+        {
+            font-weight: 600;
+        }
+
+        .header-detail > div:nth-child(2)
+        {
+            flex-grow: 1;
+            text-align: right;
+        }
+
+        .skills-list
+        {
+            display: flex;
+            flex-direction: row;
+            gap: 0.4rem;
+            font-style: italic;
+            color: var(--light-text);
+            font-size: 10pt;
+            margin-top: 0.15rem;
+        }
+
+        .group
+        {
+            margin-top: 30px;
+            border-top: var(--line-width) solid var(--accent-color);
+            display: flex;
+            flex: row;
+        }
+
+        .group>div:nth-child(2)
+        {
+            flex-grow: 1;
+        }
+
+        .group-name
+        {
+            background-color: var(--accent-color);
+            color: white;
+            
+            padding: 0.6rem;
+            padding-top: calc(0.6rem - var(--line-width));
+
+            font-size: 14pt;
+        }
+
+        .group>div:nth-child(1) {
+            width: 150px;
+        }
+
+        .education-item
+        {
+            border-top: var(--line-width-thin) solid var(--accent-color);
+            display: grid;
+            grid-template-columns: 20% auto;
+            grid-template-rows: auto auto;
+            grid-template-areas: 
+                "year name"
+                "year description";
+            padding: 1rem;
+        }
+
+        .education-item>div:nth-child(1)
+        {
+            grid-area: year;
+            color: var(--light-text);
+        }
+
+        .education-item>div:nth-child(2)
+        {
+            grid-area: name;
+            font-weight: 800;
+        }
+
+        .education-item>div:nth-child(3)
+        {
+            grid-area: description;
+        }
+
+        .experience-item
+        {
+            border-top: var(--line-width-thin) solid var(--accent-color);
+            
+            display: grid;
+            grid-template-columns: 20% auto;
+            grid-template-rows: auto auto auto;
+            grid-template-areas: 
+                "year name"
+                "year skills"
+                "year tasks";
+            padding: 1rem;
+        }
+
+        .experience-item>div:nth-child(1)
+        {
+            grid-area: name;
+            font-weight: 800;
+        }
+
+        .experience-item>div:nth-child(2)
+        {
+            grid-area: year;
+        }
+
+        .experience-item>div:nth-child(2)>div:nth-child(2)
+        {
+            color: var(--light-text);
+        }
+
+        .experience-item>div:nth-child(3)
+        {
+            grid-area: skills;
+        }
+
+        .experience-item>div:nth-child(4)
+        {
+            grid-area: tasks;
+            margin-top: 0.5rem;
+        }
+
+        .project-item
+        {
+            border-top: var(--line-width-thin) solid var(--accent-color);
+            display: grid;
+            grid-template-columns: 20% auto;
+            grid-template-rows: auto auto auto;
+            grid-template-areas: 
+                "year name"
+                "year skills"
+                "year descriptions";
+            padding: 1rem;
+        }
+
+        .project-item>div:nth-child(1)
+        {
+            grid-area: name;
+            font-weight: 800;
+        }
+
+        .project-item>div:nth-child(2)
+        {
+            grid-area: year;
+        }
+
+        .project-item>div:nth-child(3)
+        {
+            grid-area: skills;
+        }
+
+        .project-item>div:nth-child(4)
+        {
+            grid-area: descriptions;
+            margin-top: 0.5rem;
+        }
+        
+        .skills
+        {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .skill-group
+        {
+            border-top: var(--line-width-thin) solid var(--accent-color);
+            
+            display: flex;
+            flex-direction: column;
+            padding: 1rem;
+            gap: 0.2rem;
+        }
+
+        .skill
+        {
+            display: flex;
+            width: 100%;
+        }
+
+        .skill>div:nth-child(1)
+        {
+            flex-grow: 1;
+        }
+
+        .skill>div:nth-child(2)
+        {
+            text-align: right;
+        }
+
+        .tools-list
+        {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tool-list-group
+        {
+            border-top: var(--line-width-thin) solid var(--accent-color);
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        .languages
+        {
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        .language
+        {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+        }
+
+        .language>div:nth-child(1)
+        {
+            font-weight: 800;
+        }
+
+        .language>div:nth-child(2)
+        {
+            flex-grow: 1;
+            text-align: right;
+        }
+
+        rating {
+            display:block;
+        }
+
+        rating[n="1"]:before {
+        content: "●";
+        }
+
+        rating[n="2"]:before {
+        content: "● ●";
+        }
+
+        rating[n="3"]:before {
+        content: "● ● ● ";
+        }
+
+        rating[n="4"]:before {
+        content: "● ● ● ●";
+        }
+
+        rating[n="5"]:before {
+        content: "● ● ● ● ●";
+        }
+
+        rating[n="6"]:before {
+            content: "● ● ● ● ● ●";
+        }
+
+    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuno Costa</title>
+</head>
+<body>
+    <div class="contents">
+        <div class="header">
+            <div class="name">Nuno Alexandre Costa</div>
+            <div class="header-details">
+                <div class="header-detail">
+                    <div>Telephone</div>
+                    <div>+351 928 045 204</div>
+                </div>
+                <div class="header-detail">
+                    <div>E-Mail</div>
+                    <div><a href="mailto:nuno20090@gmail.com">nuno20090@gmail.com</a></div>
+                </div>
+                <div class="header-detail">
+                    <div>Nationality</div>
+                    <div>Portuguese</div>
+                </div>
+                <div class="header-detail">
+                    <div>Date of Birth</div>
+                    <div>September 6th, 1984</div>
+                </div>
+                <div class="header-detail">
+                    <div>Social</div>
+                    <div><a href="https://www.linkedin.com/in/nuno20090/">https://www.linkedin.com/in/nuno20090/</a></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="group">
+            <div>
+                <div class="group-name">Education</div>
+            </div>
+            <div>
+                <div class="education-item">
+                    <div>2019</div>
+                    <div>Scrum.org</div>
+                    <div>Professional Scrum Master</div>
+                </div>
+                <div class="education-item">
+                    <div>2007</div>
+                    <div>Citeforma</div>
+                    <div>C#.Net & VB.Net</div>
+                </div>
+                <div class="education-item">
+                    <div>2003</div>
+                    <div>INETE - Instituto de Educação Técnica</div>
+                    <div>Software Development, network management</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="group">
+            <div>
+                <div class="group-name">Experience</div>
+            </div>
+            <div>
+                <div class="experience-item">
+                    <div>Mind (Portugal)</div>
+                    <div>
+                        <div>2022</div>
+                        <div>1 year</div>
+                    </div>
+                    <div class="skills-list">
+                        <div>C++</div>
+                        <div>Typescript</div>
+                        <div>React</div>
+                        <div>MongoDB</div>
+                        <div>Electron</div>
+                    </div>
+                    <div>
+                        <div>Development of Office add-in</div>
+                        <div>Assistance in Backend and Frontend of the web application</div>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div>Sendsteps (Netherlands)</div>
+                    <div>
+                        <div>2020</div>
+                        <div>2 years</div>
+                    </div>
+                    <div class="skills-list">
+                        <div>C++</div>
+                        <div>Javascript</div>
+                        <div>PHP</div>
+                        <div>React</div>
+                        <div>Yii Framework</div>
+                        <div>SQL</div>
+                    </div>
+                    <div>
+                        <div>Development of Office add-in;</div>
+                        <div>Assistance in Backend and Frontend of the web application.</div>
+                    </div>
+                </div>
+            
+                <div class="experience-item">
+                    <div>Accent Groupe (Netherlands)</div>
+                    <div>
+                        <div>2013</div>
+                        <div>7 years</div>
+                    </div>
+                    <div class="skills-list">
+                        <div>C++</div>
+                        <div>SQL</div>
+                        <div>MFC</div>
+                        <div>Multithreading</div>
+                    </div>
+                    <div>
+                        <div>Development and maintenance of trading application;</div>
+                        <div>Development of new internal tools.</div>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div>TI - Tecnologia Informática / Artsoft (Portugal)</div>
+                    <div>
+                        <div>2008</div>
+                        <div>5 years</div>
+                    </div>
+                    <div class="skills-list">
+                        <div>C++</div>
+                        <div>SQL</div>
+                        <div>MFC</div>
+                    </div>
+                    <div>
+                        <div>Development and maintenance of ERP software.</div>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div>Markdata, Sistemas de Informação (Portugal)</div>
+                    <div>
+                        <div>2004</div>
+                        <div>4 years</div>
+                    </div>
+                    <div class="skills-list">
+                        <div>C++</div>
+                        <div>MFC</div>
+                        <div>Multithreading</div>
+                    </div>
+                    <div>
+                        <div>Development and maintenance of media platform.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="group">
+            <div>
+                <div class="group-name">Projects</div>
+            </div>
+            <div>
+                <div class="project-item">
+                    <div>Better FIX Parser</div>
+                    <div>2018</div>
+                    <div class="skills-list">
+                        <div>C++</div>
+                        <div>Multithreading</div>
+                    </div>
+                    <div>
+                        <div>Application to parse FIX logs generated from trading sessions.</div>
+                        <div><a href="https://www.betterfixparser.com/">https://www.betterfixparser.com/</a></div>
+                    </div>
+                </div>
+                
+                <div class="project-item">
+                    <div>Simple Queue Manager</div>
+                    <div>2021</div>
+                    <div class="skills-list">
+                        <div>Typescript</div>
+                        <div>Node.JS</div>
+                        <div>Angular</div>
+                        <div>SQL</div>
+                    </div>
+                    <div>
+                        <div>Web application to handle queues in physical spaces.</div>
+                        <div><a href="https://www.simplequeueparser.com/">https://www.simplequeueparser.com/</a></div>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div>Story Together</div>
+                    <div>2023</div>
+                    <div class="skills-list">
+                        <div>Typescript</div>
+                        <div>Node.JS</div>
+                        <div>React</div>
+                        <div>SQL</div>
+                    </div>
+                    <div>
+                        <div>Web application to create short stories collaboratively.</div>
+                        <div><a href="http://storypieces.ddns.net/">http://storypieces.ddns.net/</a></div>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div>Ajuda a Iniciantes de Programação</div>
+                    <div>2023</div>
+                    <div class="skills-list">
+                        <div>C++</div>
+                        <div>C</div>
+                    </div>
+                    <div>
+                        <div>Online videos in Portuguese where several topics of C and C++ are explained. </div>
+                        <div><a href="https://www.youtube.com/@ajudaainiciantesdeprogramacao">https://www.youtube.com/@ajudaainiciantesdeprogramacao</a></div>
+                        <div><a href="https://www.twitch.com/nunoacosta">https://www.twitch.tv/nunoacosta</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="group">
+            <div>
+                <div class="group-name">Skills</div>
+            </div>
+
+            <div class="skills">
+                <div class="skill-group">
+                    <div class="skill">
+                        <div>Desktop Applications</div>
+                        <rating n="6"></rating>
+                    </div>
+                    <div class="skill">
+                        <div>Services</div>
+                        <rating n="5"></rating>
+                    </div>
+                    <div class="skill">
+                        <div>Relational Databases</div>
+                        <rating n="5"></rating>
+                    </div>
+                    <div class="skill">
+                        <div>Distrobuted Databases</div>
+                        <rating n="3"></rating>
+                    </div>
+                    <div class="skill">
+                        <div>Back-end Applications</div>
+                        <rating n="5"></rating>
+                    </div>
+                    <div class="skill">
+                        <div>Front-end Applications</div>
+                        <rating n="4"></rating>
+                    </div>
+                    <div class="skill">
+                        <div>Networking</div>
+                        <rating n="3"></rating>
+                    </div>
+                    
+                </div>
+
+                <div class="skill-group">
+                    <div class="skill">
+                        <div>C / C++</div>
+                        <rating n="6"></rating>
+                    </div>
+                    <div class="skill">
+                        <div>JS / TS</div>
+                        <rating n="5"></rating>
+                    </div>
+                    <div class="skill">
+                        <div>Node.JS</div>
+                        <rating n="5"></rating>
+                    </div>
+                    <div class="skill">
+                        <div>React</div>
+                        <rating n="5"></rating>
+                    </div>
+                    <div class="skill">
+                        <div>Angular</div>
+                        <rating n="4"></rating>
+                    </div>
+                    <div class="skill">
+                        <div>Electron</div>
+                        <rating n="2"></rating>
+                    </div>
+                    <div class="skill">
+                        <div>SQL</div>
+                        <rating n="4"></rating>
+                    </div>
+                    <div class="skill">
+                        <div>MongoDB</div>
+                        <rating n="2"></rating>
+                    </div>
+                    <div class="skill">
+                        <div>C#</div>
+                        <rating n="3"></rating>
+                    </div>
+                    <div class="skill">
+                        <div>PHP</div>
+                        <rating n="1"></rating>
+                    </div>
+                    <div class="skill">
+                        <div>Qt</div>
+                        <rating n="1"></rating>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <div class="skill">
+                        <div>Usability</div>
+                        <rating n="4"></rating>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="group">
+            <div>
+                <div class="group-name">Tools</div>
+            </div>
+            <div class="tools-list">
+                <div class="tool-list-group">
+                    <div>Visual Studio</div>
+                    <div>Visual Studio Code</div>
+                    <div>QT Studio</div>
+                    <div>Docker</div>
+                    <div>Windows</div>
+                    <div>Linux</div>
+                </div>
+                <div class="tool-list-group">
+                    <div>Socket.IO</div>
+                    <div>TCP / UDP</div>
+                </div>
+                <div class="tool-list-group">
+                    <div>Scrum</div>
+                    <div>Jira</div>
+                    <div>GIT</div>
+                    <div>SVN</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="group">
+            <div>
+                <div class="group-name">Languages</div>
+            </div>
+            <div class="languages">
+                <div class="language">
+                    <div>
+                        Portuguese
+                    </div>
+                    <div>
+                        Read & write, full proficiency
+                    </div>
+                </div>
+                <div class="language">
+                    <div>
+                        English
+                    </div>
+                    <div>
+                        Read & write, full proficiency
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
