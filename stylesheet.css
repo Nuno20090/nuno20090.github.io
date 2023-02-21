@@ -1,0 +1,302 @@
+:root {
+    --back-color: rgb(255, 255, 255);
+    --accent-color: rgb(121, 23, 23);
+    --light-text: rgb(150, 150, 150);
+    --line-width: 10px;
+    --line-width-thin: 2px;
+}
+
+body {
+    background-color: var(--back-color);
+    font-family: "Lato", sans-serif;
+}
+
+.contents {
+    max-width: 700px;
+    min-width: 400px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.name {
+
+    font-size: 50px;
+    border-left: var(--line-width) solid var(--accent-color);
+    border-top: var(--line-width) solid var(--accent-color);
+    padding: 1rem;
+}
+
+.header-details
+{
+    margin-top: 3rem;
+    padding: 1rem;
+    width: 70%;
+    transform: translate(15%);
+
+    align-self: center;
+    display:flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.header-detail
+{
+    display: flex;
+    flex-direction: row;
+}
+
+.header-detail > div:nth-child(1)
+{
+    font-weight: 600;
+}
+
+.header-detail > div:nth-child(2)
+{
+    flex-grow: 1;
+    text-align: right;
+}
+
+.skills-list
+{
+    display: flex;
+    flex-direction: row;
+    gap: 0.4rem;
+    font-style: italic;
+    color: var(--light-text);
+    font-size: 10pt;
+    margin-top: 0.15rem;
+}
+
+.group
+{
+    margin-top: 30px;
+    border-top: var(--line-width) solid var(--accent-color);
+    display: flex;
+    flex: row;
+}
+
+.group>div:nth-child(2)
+{
+    flex-grow: 1;
+}
+
+.group-name
+{
+    background-color: var(--accent-color);
+    color: white;
+    
+    padding: 0.6rem;
+    padding-top: calc(0.6rem - var(--line-width));
+
+    font-size: 14pt;
+}
+
+.group>div:nth-child(1) {
+    width: 150px;
+}
+
+.education-item
+{
+    border-top: var(--line-width-thin) solid var(--accent-color);
+    display: grid;
+    grid-template-columns: 20% auto;
+    grid-template-rows: auto auto;
+    grid-template-areas: 
+        "year name"
+        "year description";
+    padding: 1rem;
+}
+
+.education-item>div:nth-child(1)
+{
+    grid-area: year;
+    color: var(--light-text);
+}
+
+.education-item>div:nth-child(2)
+{
+    grid-area: name;
+    font-weight: 800;
+}
+
+.education-item>div:nth-child(3)
+{
+    grid-area: description;
+}
+
+.experience-item
+{
+    border-top: var(--line-width-thin) solid var(--accent-color);
+    
+    display: grid;
+    grid-template-columns: 20% auto;
+    grid-template-rows: auto auto auto;
+    grid-template-areas: 
+        "year name"
+        "year skills"
+        "year tasks";
+    padding: 1rem;
+}
+
+.experience-item>div:nth-child(1)
+{
+    grid-area: name;
+    font-weight: 800;
+}
+
+.experience-item>div:nth-child(2)
+{
+    grid-area: year;
+}
+
+.experience-item>div:nth-child(2)>div:nth-child(2)
+{
+    color: var(--light-text);
+}
+
+.experience-item>div:nth-child(3)
+{
+    grid-area: skills;
+}
+
+.experience-item>div:nth-child(4)
+{
+    grid-area: tasks;
+    margin-top: 0.5rem;
+}
+
+.project-item
+{
+    border-top: var(--line-width-thin) solid var(--accent-color);
+    display: grid;
+    grid-template-columns: 20% auto;
+    grid-template-rows: auto auto auto;
+    grid-template-areas: 
+        "year name"
+        "year skills"
+        "year descriptions";
+    padding: 1rem;
+}
+
+.project-item>div:nth-child(1)
+{
+    grid-area: name;
+    font-weight: 800;
+}
+
+.project-item>div:nth-child(2)
+{
+    grid-area: year;
+}
+
+.project-item>div:nth-child(3)
+{
+    grid-area: skills;
+}
+
+.project-item>div:nth-child(4)
+{
+    grid-area: descriptions;
+    margin-top: 0.5rem;
+}
+
+.skills
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.skill-group
+{
+    border-top: var(--line-width-thin) solid var(--accent-color);
+    
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 0.2rem;
+}
+
+.skill
+{
+    display: flex;
+    width: 100%;
+}
+
+.skill>div:nth-child(1)
+{
+    flex-grow: 1;
+}
+
+.skill>div:nth-child(2)
+{
+    text-align: right;
+}
+
+.tools-list
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.tool-list-group
+{
+    border-top: var(--line-width-thin) solid var(--accent-color);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.languages
+{
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.language
+{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.language>div:nth-child(1)
+{
+    font-weight: 800;
+}
+
+.language>div:nth-child(2)
+{
+    flex-grow: 1;
+    text-align: right;
+}
+
+rating {
+    display:block;
+}
+
+rating[n="1"]:before {
+content: "●";
+}
+
+rating[n="2"]:before {
+content: "● ●";
+}
+
+rating[n="3"]:before {
+content: "● ● ● ";
+}
+
+rating[n="4"]:before {
+content: "● ● ● ●";
+}
+
+rating[n="5"]:before {
+content: "● ● ● ● ●";
+}
+
+rating[n="6"]:before {
+    content: "● ● ● ● ● ●";
+}
