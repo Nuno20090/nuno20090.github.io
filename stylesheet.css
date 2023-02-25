@@ -300,3 +300,17 @@ content: "● ● ● ● ●";
 rating[n="6"]:before {
     content: "● ● ● ● ● ●";
 }
+
+.footnote
+{
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.footnote > div
+{
+    text-align: center;
+}
